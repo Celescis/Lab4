@@ -1,0 +1,25 @@
+<div class="tabla-container">
+    <table class="table table-striped centrado">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Fecha de estreno</th>
+          <th>Cantidad de público</th>
+          <th>Foto portada</th>
+          <th>Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of listadoPeliculas">
+          <td>{{ pelicula.nombre }}</td>
+          <td>{{ pelicula.tipo }}</td>
+          <td>{{pelicula.fechaEstreno | date: 'dd/MMMM/yyy'}}</td>
+          <td>{{ pelicula.cantidadPublico }}</td>
+          <td><img class="foto-portada" [src]="pelicula.foto" alt="Foto de portada" height="100px" width="100px"></td>
+          <td><button class="btn btn-primary" (click)="obtenerPelicula(pelicula)">Detalles</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
