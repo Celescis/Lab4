@@ -5,12 +5,14 @@ import { PeliculaAltaComponent } from './peliculas/pelicula-alta/pelicula-alta.c
 import { PeliculaListadoComponent } from './peliculas/pelicula-listado/pelicula-listado.component';
 import { ActorAltaComponent } from './actor/actor-alta/actor-alta.component';
 import { ActorListadoComponent } from './actor/actor-listado/actor-listado.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const routes: Routes = [
+  { path: '', component: BusquedaComponent },
   { path: "bienvenido", component: BienvenidoComponent },
+  { path: "busqueda", component: BusquedaComponent },
   { path: "peliculas/alta", component: PeliculaAltaComponent },
   { path: "peliculas/listado", component: PeliculaListadoComponent },
-  { path: "peliculas/alta", component: PeliculaAltaComponent },
   { path: "actor/alta", component: ActorAltaComponent },
   { path: "actor/listado", component: ActorListadoComponent },
 ];

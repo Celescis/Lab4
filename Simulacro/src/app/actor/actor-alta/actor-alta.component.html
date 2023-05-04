@@ -1,1 +1,83 @@
-<p>actor-alta works!</p>
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Seleccione un pais</span>
+        </h4>
+
+        <app-paises-tabla (botonClickeado)="onBotonClickeado($event)"></app-paises-tabla>
+
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Datos del actor</h4>
+        <form #actorForm="ngForm" class="needs-validation" novalidate>
+          <div class="row g-3">
+
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="firstName" placeholder="" value="" required
+                [(ngModel)]="actor.nombre" pattern="[a-zA-Z ]+" title="Solo se permiten letras" (blur)="validarNombre()"
+                [ngClass]="{'is-invalid': !nombreValido, 'is-valid': nombreValido}">
+              <div class="invalid-feedback">
+                Ingrese un nombre valido
+              </div>
+              <div class="valid-feedback">
+                Nombre valido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input type="text" class="form-control" name="lastName" placeholder="" value="" required
+                [(ngModel)]="actor.apellido" pattern="[a-zA-Z ]+" title="Solo se permiten letras"
+                (blur)="validarApellido()" [ngClass]="{'is-invalid': !apellidoValido, 'is-valid': apellidoValido}">
+              <div class="invalid-feedback">
+                Ingrese un apellido valido
+              </div>
+              <div class="valid-feedback">
+                Apellido valido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="edad" class="form-label">Edad</label>
+              <input type="number" class="form-control" name="edad" placeholder="" value="" required
+                [(ngModel)]="actor.edad" min="18" max="100" (blur)="validarEdad()"
+                [ngClass]="{'is-invalid': !edadValido, 'is-valid': edadValido}">
+              <div class="invalid-feedback">
+                Ingrese una edad válida (debe ser mayor de 18 años y menor de 100 años)
+              </div>
+              <div class="valid-feedback">
+                Edad válida
+              </div>
+            </div>
+
+
+            <div class="col-sm-6">
+              <label for="pais" class="form-label">Pais natal</label>
+              <input type="text" disabled class="form-control" name="pais" placeholder="" [value]="pais" required>
+              <div class="invalid-feedback">
+                Seleccione un pais de la lista
+              </div>
+            </div>
+
+
+            <div class="col-sm-6">
+              <label for="foto" class="form-label">Foto</label>
+              <input type="text" disabled class="form-control" name="foto" placeholder="" required>
+              <div class="invalid-feedback">
+                Ingrese una foto del actor
+              </div>
+            </div>
+
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!actorForm.valid"
+              (click)="guardarActor()">Agregar Actor</button>
+            <button class="w-100 btn btn-primary btn-lg" (click)="volver()">Volver</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
